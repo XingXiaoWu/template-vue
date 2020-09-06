@@ -5,14 +5,19 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "npx vue-cli-service build --mode prod",
-    "build:dev": "npx vue-cli-service build --mode dev",
-    "build:test": "npx vue-cli-service build --mode dev",
-    "build:prod": "npx vue-cli-service build --mode prod",
     "lint": "vue-cli-service lint",
+    "build-storybook": "build-storybook",
+    "build:dev": "npx vue-cli-service build --mode dev",
+    "build:prod": "npx vue-cli-service build --mode prod",
+    "build:test": "npx vue-cli-service build --mode dev",
+    "electron:build": "vue-cli-service electron:build",
+    "electron:serve": "vue-cli-service electron:serve",
     "eslint": "eslint --fix --ext .js --ext .vue src/",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps",
+    "storybook": "start-storybook -p 6006"
   },
+  "main": "background.js",
   "dependencies": {
     "@xing.wu/axios": "^1.0.0",
     "axios": "^0.19.2",
@@ -38,14 +43,22 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-preset-vue": "^2.0.2",
+    "electron": "^9.0.0",
+    "electron-devtools-installer": "^3.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "husky": "^4.2.5",
     "less": "^3.11.1",
     "less-loader": "^6.1.0",
     "lint-staged": "^10.2.2",
+    "vue-cli-plugin-electron-builder": "~2.0.0-rc.4",
     "vue-template-compiler": "^2.6.11"
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -56,10 +69,5 @@
       "eslint --fix",
       "git add"
     ]
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  }
 }
