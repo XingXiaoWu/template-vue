@@ -27,13 +27,13 @@ module.exports = {
     open: true,
     // https: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
-    proxy: {
-      // '/': {
-      //   target: 'http://www.baidu.com/',
-      //   // pathRewrite: {'^/entry/test/': ''},
-      //   changeOrigin: true, // target是域名的话，需要这个参数，
-      // // secure: true // 设置支持https协议的代理
-      // },
-    },
+    // proxy: {
+    // '/': {
+    //   target: 'http://www.baidu.com/',
+    //   // pathRewrite: {'^/entry/test/': ''},
+    //   changeOrigin: true, // target是域名的话，需要这个参数，
+    // // secure: true // 设置支持https协议的代理
+    // },
+    // },
   },
 };
