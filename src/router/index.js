@@ -28,14 +28,6 @@ const defaultRouter = [
       title: '首页',
     },
   },
-  {
-    path: '/table',
-    name: 'table',
-    component: () => import('@/views/table/index.vue'),
-    meta: {
-      title: '表格案例',
-    },
-  },
   errorRouter,
   { path: '*', redirect: '/error/404' },
 ];

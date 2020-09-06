@@ -70,6 +70,13 @@
                     "Vue"
                 ]
             }
+        ],
+        "prefer-destructuring": [
+            "error",
+            {
+                "object": true,
+                "array": false
+            }
         ]
     }
 }

@@ -20,8 +20,5 @@ export default {
     goto() {
       this.$router.push({ name: '404' });
     },
-    gotable() {
-      this.$router.push({ name: 'table' });
-    },
   },
 };
