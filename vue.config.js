@@ -39,6 +39,22 @@ module.exports = {
   pluginOptions: {
     electronBuilder: {
       preload: './src/preload.js',
+      // 打包参数
+      builderOptions: {
+        appId: 'com.xxx.xxx',
+        productName: '配置见vue.config.js',
+        extraResources: [{
+          from: path.join(__dirname, '/src/assets/logo.png'),
+          to: './',
+        }],
+        win: {
+          target: [
+            {
+              target: 'nsis', // 我们要的目标安装包
+            },
+          ],
+        },
+      },
     },
   },
 };
