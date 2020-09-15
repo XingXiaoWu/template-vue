@@ -15,7 +15,8 @@
     "eslint": "eslint --fix --ext .js --ext .vue src/",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006",
+    "lf":"find . -type f | grep -v \"node_modules\" | xargs dos2unix"
   },
   "main": "background.js",
   "dependencies": {
