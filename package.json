@@ -11,7 +11,8 @@
     "lint": "vue-cli-service lint",
     "eslint": "eslint --fix --ext .js --ext .vue src/",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lf":"find . -type f | grep -v \"node_modules\" | xargs dos2unix"
   },
   "dependencies": {
     "@xing.wu/axios": "^1.0.0",
