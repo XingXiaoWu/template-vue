@@ -43,7 +43,7 @@ module.exports = {
     // 开发环境默认开启反向代理，如果不需要请自行注释
     proxy: {
       '/': {
-        target: 'http://dev.51trust.com/',
+        target: 'http://www.baidu.com/',
         changeOrigin: true,
       },
     },
