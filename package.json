@@ -8,7 +8,9 @@
     "build:dev": "vue-cli-service build --mode dev",
     "build:test": "vue-cli-service build --mode test",
     "build:prod": "vue-cli-service build --mode prod",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lf": "find . -type f | grep -v \"node_modules\" | xargs dos2unix",
+    "new": "plop"
   },
   "dependencies": {
     "axios": "^0.21.0",
@@ -40,6 +42,7 @@
     "less": "^3.12.2",
     "less-loader": "^7.0.2",
     "lint-staged": "^10.5.1",
+    "plop": "^2.7.4",
     "vue-template-compiler": "^2.6.11"
   },
   "gitHooks": {
