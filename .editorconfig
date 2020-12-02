@@ -1,9 +1,7 @@
-# 部分编辑器自带editorconfig插件，部分需要自行安装
-
-root = true
-
-# 匹配全部文件, 并执行下列规则
-
-[*]
-# 结尾换行符，可选"lf"、"cr"、"crlf"
+[*.{js,jsx,ts,tsx,vue}]
+indent_style = space
+indent_size = 2
 end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+max_line_length = 100

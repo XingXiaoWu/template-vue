@@ -1,39 +1,51 @@
+/* eslint-disable no-param-reassign */
 const path = require('path');
-
-function resolve(dir) {
-  return path.join(__dirname, dir);
-}
+const { globalSettings } = require('./src/setting');
 
 module.exports = {
-  // 公共路径
   publicPath: './',
+  // 保存时lint,错误无法展示
+  lintOnSave: 'default',
+  // 是否生成map
+  productionSourceMap: false,
+  // 添加重命名
   configureWebpack: {
     resolve: {
       alias: {
-        '@': resolve('src'),
+        '@': path.resolve('src'),
       },
     },
   },
+  chainWebpack: (config) => {
+    config.plugin('html')
+      .tap((args) => {
+        args[0].title = globalSettings.siteName;
+        // if (isCDN) {
+        //   args[0].cdn = cdn;
+        // }
+        // args[0].debugTool = process.env.VUE_APP_DEBUG_TOOL;
+        // args[0].appType = process.env.VUE_APP_TYPE;
+        return args;
+      });
+  },
+  // css解析
   css: {
     loaderOptions: {
       less: {
         // @/ is an alias to src/
         // so this assumes you have a file named `src/variables.less`
-        prependData: '@import "@/styles/index.less";',
+        additionalData: '@import "@/styles/index.less";',
       },
     },
   },
   devServer: {
     open: true,
-    // https: true,
-    headers: { 'Access-Control-Allow-Origin': '*' },
-    // proxy: {
-    // '/': {
-    //   target: 'http://www.baidu.com/',
-    //   // pathRewrite: {'^/entry/test/': ''},
-    //   changeOrigin: true, // target是域名的话，需要这个参数，
-    // // secure: true // 设置支持https协议的代理
-    // },
-    // },
+    // 开发环境默认开启反向代理，如果不需要请自行注释
+    proxy: {
+      '/': {
+        target: 'http://dev.51trust.com/',
+        changeOrigin: true,
+      },
+    },
   },
 };

@@ -1,31 +1,28 @@
 import Vue from 'vue';
-import Element from 'element-ui';
 import dayjs from 'dayjs';
-import API from '@/api/index';
+import hotkeys from 'hotkeys-js';
+import ElementUI from 'element-ui';
+
 import App from './App.vue';
-import router from './router/index';
-import store from './store/index';
-import '@/utils/routeHooks';
-import * as filters from './filters'; // global filters
+import { router } from './router';
+import './router/routeHooks';
+import store from './store';
+import api from './api';
+
+import '@/components/autoRegister';
 import '@/styles/element-theme/theme/index.css';
-// Vue设置
+import '@/styles/iconfont.less';
+import '@/styles/reset.less';
+
 Vue.config.productionTip = false;
-// window挂载
-window.dayjs = dayjs;
-// 属性挂载
+
 Vue.prototype.$dayjs = dayjs;
-Vue.prototype.$API = API;
+Vue.prototype.$hotkeys = hotkeys;
+Vue.prototype.$api = api;
 
-// 设置elementUI的默认size
-Vue.use(Element, {
-  size: 'medium',
-});
-// 设置全局过滤器
-Object.keys(filters).forEach((key) => {
-  Vue.filter(key, filters[key]);
-});
-
-// 引入store
+Vue.use(ElementUI);
+// 鉴于过滤器在Vue3被取消了,这里不再添加过滤器
+// eventBus在Vue3被取消,不再使用eventBus
 new Vue({
   router,
   store,
