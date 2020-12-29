@@ -34,7 +34,7 @@ module.exports = {
       less: {
         // @/ is an alias to src/
         // so this assumes you have a file named `src/variables.less`
-        additionalData: '@import "@/styles/index.less";',
+        additionalData: '@import "@/styles/variables.less";',
       },
     },
   },

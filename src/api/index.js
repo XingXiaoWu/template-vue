@@ -3,23 +3,39 @@ import { Message } from 'element-ui';
 import { globalSettings } from '@/setting';
 import store from '@/store';
 // 错误处理
-function errorHandle(error) {
-  Message.error(error.toString());
-}
-// 处理handle
-function handle(data) {
-  if (data.status !== '0') {
-    if (data.status === globalSettings.logonFailureCode) {
+const errorHandle = (error) => {
+  // 处理错误,尝试获取error的message展示
+  try {
+    const tmp = JSON.parse(error.message);
+    const { message } = tmp;
+    Message.error(message);
+  } catch (e) {
+    Message.error(error.toString());
+  }
+};
+
+// 设置错误处理
+API.setErrorHandle(errorHandle);
+
+// 结果拦截器
+API.interceptors.response.use(
+  (response) => {
+    // 判断状态
+    if (response.status === '0') {
+      return response.data;
+    }
+    if (response.status === globalSettings.logonFailureCode) {
       // 清空登录数据并刷新
       store.dispatch('userStore/logonFailure');
       window.location.reload();
     }
-    throw Error(data.message);
-  }
-  return data.data;
-}
-API.setResponseHandle(handle);
-API.setErrorHandle(errorHandle);
+    // 否则都是错了
+    throw new Error(JSON.stringify(response));
+  },
+  (error) => {
+    throw error;
+  },
+);
 
 export default {
   getExample: (params) => API.GET('/stastic/getCertNum', params),

@@ -10,9 +10,7 @@ import store from './store';
 import api from './api';
 
 import '@/components/autoRegister';
-import '@/styles/element-theme/theme/index.css';
-import '@/styles/iconfont.less';
-import '@/styles/reset.less';
+import '@/styles/index.less';
 
 Vue.config.productionTip = false;
 
