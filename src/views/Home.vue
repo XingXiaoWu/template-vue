@@ -14,5 +14,8 @@ export default defineComponent({
   components: {
     HelloWorld,
   },
+  setup() {
+    return {};
+  },
 });
 </script>
