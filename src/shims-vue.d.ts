@@ -5,3 +5,4 @@ declare module '*.vue' {
   export default component
 }
 type RawBindings = any;
+type Any = any;
