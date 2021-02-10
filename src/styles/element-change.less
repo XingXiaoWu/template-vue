@@ -1,0 +1,94 @@
+@import './variables.less';
+
+// 移除边线
+.el-menu {
+  border: none;
+}
+
+// 侧边栏子菜单颜色
+.el-submenu {
+  .el-submenu > .el-submenu__title {
+    background-color: @g-sidebar-item-background-color !important;
+    &:hover {
+      background-color: @g-sidebar-hover-background-color !important;
+    }
+  }
+  .el-menu-item {
+    background-color: @g-sidebar-item-background-color !important;
+    &:hover {
+      background-color: @g-sidebar-hover-background-color !important;
+    }
+  }
+}
+
+// 鼠标移动上去的样式
+.el-submenu__title:hover {
+  background-color: @g-sidebar-hover-background-color !important;
+  // 如果没有用solt，直接写color
+  color: @g-sidebar-hover-text-color !important;
+  .icon {
+    color: @g-sidebar-hover-icon-color;
+  }
+  span {
+    color: @g-sidebar-hover-text-color;
+  }
+}
+
+// 鼠标移上去颜色
+.el-menu-item:hover {
+  background-color: @g-sidebar-hover-background-color !important;
+  // 如果没有用solt，直接写color
+  color: @g-sidebar-hover-text-color !important;
+  .icon {
+    color: @g-sidebar-hover-icon-color;
+  }
+  span {
+    color: @g-sidebar-hover-text-color;
+  }
+}
+// 侧边栏选中背景样式，选中优先级最高，放在最下面
+.el-menu-item.is-active {
+  background-color: @g-sidebar-active-background-color !important;
+}
+
+// 面包屑导航
+.el-breadcrumb__inner {
+  color: #999999;
+}
+.el-breadcrumb__inner a,
+.el-breadcrumb__inner.is-link {
+  color: #999999;
+}
+
+.el-breadcrumb__item:last-child .el-breadcrumb__inner {
+  color: #007aff !important;
+}
+// 横向分割线
+.el-divider--horizontal {
+  margin: 0;
+  background-color: @g-main-background-color;
+}
+
+span {
+  font-family: PingFangSC-Regular, PingFang SC;
+}
+p {
+  font-family: PingFangSC-Regular, PingFang SC;
+}
+
+// table
+.el-table--border,
+.el-table--group {
+  border: none;
+}
+// 底部边框
+.el-table--border::after,
+.el-table--group::after,
+.el-table::before {
+  background-color: transparent;
+}
+
+// TODO:临时性修复表头,等element-puls修正后通过更新修复
+.el-table__header {
+  table-layout: auto;
+}

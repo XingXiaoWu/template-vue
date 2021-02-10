@@ -18,8 +18,6 @@ module.exports = {
   css: {
     loaderOptions: {
       less: {
-        // @/ is an alias to src/
-        // so this assumes you have a file named `src/variables.less`
         additionalData: '@import "@/styles/variables.less";',
         lessOptions: {
           javascriptEnabled: true,

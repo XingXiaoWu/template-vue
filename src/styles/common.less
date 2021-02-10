@@ -1,0 +1,57 @@
+.flex {
+  display: flex;
+}
+.column {
+  flex-direction: column;
+}
+.row {
+  flex-direction: row;
+}
+.flex1 {
+  flex: 1;
+}
+.alicenter {
+  align-items: center;
+}
+.jucenter {
+  justify-content: center;
+}
+.jusb {
+  justify-content: space-between;
+}
+.jusa {
+  justify-content: space-around;
+}
+.juicenter {
+  justify-items: center;
+}
+// 顶部栏的字体样式
+.g-top-header-p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+// 隐藏滚动条
+.hidden-scroll-bar {
+  // firefox隐藏滚动条
+  scrollbar-width: none;
+  // chrome隐藏滚动条
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+//  -----------清除浮动------------
+.clearfix:after {
+  content: '020';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  /* 触发 hasLayout */
+  zoom: 1;
+}
+//  -----------清除浮动------------
