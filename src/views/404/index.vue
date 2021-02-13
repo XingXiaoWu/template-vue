@@ -1,19 +1,16 @@
-{{#if template}}
 <template>
-  <div class="{{lowerCase name}}-main">
-    {{ properCase name }}
+  <div class="error-main">
+    404
   </div>
 </template>
-{{/if}}
 
-{{#if script}}
 <script lang="ts">
 import {
   getCurrentInstance, reactive, toRefs, defineComponent, ComponentInternalInstance,
 } from 'vue';
 
 export default defineComponent({
-  name: '{{ properCase name }}',
+  name: '404',
   props: {},
   setup() {
     const { proxy } = getCurrentInstance() as ComponentInternalInstance;
@@ -25,11 +22,8 @@ export default defineComponent({
   },
 });
 </script>
-{{/if}}
 
-{{#if style}}
 <style lang="less" scoped>
-.{{lowerCase name}}-main{
+.error-main{
 }
 </style>
-{{/if}}

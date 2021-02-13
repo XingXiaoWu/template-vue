@@ -1,25 +1,56 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import Home from '../views/Home.vue';
 
-const routes: Array<RouteRecordRaw> = [
+const defaultRoutes: Array<RouteRecordRaw> = [
   {
+    meta: {
+      sidebarHidden: true,
+    },
     path: '/',
-    name: 'Home',
-    component: Home,
+    redirect: '/login',
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    meta: {
+      sidebarHidden: true,
+    },
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/Login/index.vue'),
   },
 ];
 
+const lastRoute = {
+  meta: {
+    sidebarHidden: true,
+  },
+  path: '/:pathMatch(.*)*',
+  name: '404',
+  component: () => import('@/views/404/index.vue'),
+};
+
 const router = createRouter({
   history: createWebHashHistory(),
-  routes,
+  routes: defaultRoutes,
 });
 
-export default router;
+// 重置路由
+function resetRouter() {
+  // 移除所有路径
+  const tmp = router.getRoutes();
+  const defaultRoutesPath: Array<string> = [];
+  defaultRoutes.forEach((item: RouteRecordRaw) => {
+    defaultRoutesPath.push(item.path);
+  });
+
+  tmp.forEach((item) => {
+    if (defaultRoutesPath.indexOf(item.path) === -1) {
+      // 删除
+      router.removeRoute(item.name || '');
+    }
+  });
+}
+// 动态路由
+const dynamicRoutes: Array<RouteRecordRaw> = [];
+
+export {
+  router, lastRoute, resetRouter, defaultRoutes, dynamicRoutes,
+};
