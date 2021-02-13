@@ -16,8 +16,7 @@
   </el-menu>
 </template>
 
-<script lang="ts">
-import { reactive, toRefs, defineComponent } from 'vue';
+<script lang="ts">import { reactive, toRefs, defineComponent } from 'vue';
 import variables from '@/styles/variables.less';
 import { useRouter } from 'vue-router';
 
@@ -33,7 +32,7 @@ export default defineComponent({
     // 开启
     const state = reactive({});
     const router = useRouter();
-    const handleSelect = (key) => {
+    const handleSelect = (key: string) => {
       // 点击open
       // console.log({ key, keyPath });
       // 设置打开
@@ -41,7 +40,7 @@ export default defineComponent({
         path: key,
       });
     };
-    const resolvePath = (routePath) => {
+    const resolvePath = (routePath: string) => {
       console.log(routePath);
       return routePath;
     };

@@ -4,5 +4,10 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
-type RawBindings = any;
-type Any = any;
+
+// 拓展less
+// TODO:https://juejin.cn/post/6844903560056930311
+declare module '*.less' {
+  const content: any;
+  export default content;
+}

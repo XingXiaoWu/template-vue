@@ -20,6 +20,8 @@ import {
   computed, reactive, toRefs, defineComponent,
 } from 'vue';
 import { useStore } from 'vuex';
+// 往后拓充 'a'|'b'|'c'
+type Commands = 'change-password';
 
 export default defineComponent({
   name: 'UserMenu',
@@ -32,9 +34,8 @@ export default defineComponent({
     const store = useStore();
     const realname = computed(() => store.state.userStore.userInfo.realname);
     const department = computed(() => store.state.userStore.userInfo.department);
-    const handleCommand = (e) => {
+    const handleCommand = (e: Commands) => {
       // 点击
-      // console.log(e);
       context.emit(e);
     };
     return {

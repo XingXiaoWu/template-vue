@@ -9,7 +9,7 @@
     @cancel="cancel"
   >
     <!-- 表单 -->
-    <el-form :model="form" ref="formRef" label-width="100px">
+    <el-form :model="form" :ref="setFormRef" label-width="100px">
       <el-form-item label="旧密码" prop="curPassword" :rules="[rules.required('旧密码')]">
         <el-input type="password" placeholder="请输入当前密码" v-model="form.curPassword" />
       </el-form-item>
@@ -50,11 +50,16 @@
 </template>
 
 <script lang="ts">
+import { ElForm } from 'element-plus';
 import {
-  reactive, toRefs, computed, ref, getCurrentInstance, defineComponent,
+  reactive, toRefs, computed, getCurrentInstance, defineComponent, ComponentInternalInstance, ref,
 } from 'vue';
 import Rules from '@/utils/rules';
 
+interface Props {
+  modelValue: boolean;
+  loading: boolean;
+}
 export default defineComponent({
   name: 'PasswordDialog',
   props: {
@@ -72,7 +77,7 @@ export default defineComponent({
     },
     dialogClose: {
       type: Function,
-      default: (done) => {
+      default: (done: Function) => {
         done();
       },
     },
@@ -83,10 +88,10 @@ export default defineComponent({
       },
     },
   },
-  emits: ['update:modelValue', 'update:loading', 'success'],
-  setup(props, context) {
-    const { proxy } = getCurrentInstance();
-    const formRef = ref(null);
+  emits: ['update:modelValue', 'update:loading', 'success', 'cancel'],
+  setup(props: Props, context) {
+    // const { proxy } = getCurrentInstance() as ComponentInternalInstance;
+    const formRef = ref<InstanceType<typeof ElForm>>();
     const rules = computed(() => Rules);
     const visible = computed({
       get: () => props.modelValue,
@@ -104,29 +109,31 @@ export default defineComponent({
       form: {},
     });
 
+    const setFormRef = (el: InstanceType<typeof ElForm>) => { formRef.value = el; };
+
     const resetForm = () => {
       // 充值
       // context.emit('update:form', {});
       state.form = {};
-      formRef.value.resetFields();
+      formRef.value?.resetFields();
     };
     const addAction = () => {
-      proxy.api
-        .editPassword({
-          password: state.form.curPassword,
-          newPassword: state.form.newPassword,
-          confirmPassword: state.form.repeatPassword,
-        })
-        .then(() => {
-          // console.log(response);
-          // debugger;
-          context.emit('update:modelValue', false);
-          resetForm();
-          context.emit('success');
-        })
-        .finally(() => {
-          loadingnow.value = false;
-        });
+      // proxy?.$api
+      //   .editPassword({
+      //     password: state.form.curPassword,
+      //     newPassword: state.form.newPassword,
+      //     confirmPassword: state.form.repeatPassword,
+      //   })
+      //   .then(() => {
+      //     // console.log(response);
+      //     // debugger;
+      //     context.emit('update:modelValue', false);
+      //     resetForm();
+      //     context.emit('success');
+      //   })
+      //   .finally(() => {
+      //     loadingnow.value = false;
+      //   });
     };
     const cancel = () => {
       resetForm();
@@ -136,20 +143,21 @@ export default defineComponent({
 
     const confirm = () => {
       loadingnow.value = false;
-      formRef.value.validate((valid) => {
+      formRef.value?.validate((valid) => {
         if (valid) {
           loadingnow.value = true;
           addAction();
         }
       });
     };
-    const beforeClose = (done) => {
+    const beforeClose = (done: Function) => {
       resetForm();
       done();
     };
 
     return {
       ...toRefs(state),
+      setFormRef,
       visible,
       loadingnow,
       cancel,

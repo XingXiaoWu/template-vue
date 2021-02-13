@@ -38,8 +38,9 @@ export default defineComponent({
       return globalSettings;
     },
     to() {
-      const rtn = {};
-      rtn.path = '/';
+      const rtn = {
+        path: '/',
+      };
       return rtn;
     },
   },

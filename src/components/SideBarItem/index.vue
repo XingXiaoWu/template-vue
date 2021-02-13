@@ -51,8 +51,8 @@ export default defineComponent({
     const state = reactive({});
     const hasChildren = computed(() => props.item.children && props.item.children.length > 0);
     // const isExternal = (routePath) => /^(https?:|mailto:|tel:)/.test(routePath);
-    const isExternal = (routePath) => pathStart.test(routePath);
-    const resolvePath = (routePath) => {
+    const isExternal = (routePath: string) => pathStart.test(routePath);
+    const resolvePath = (routePath: string) => {
       // 判断是不是/开头，是的话直接返回，不然返回basepath/path
       if (isExternal(routePath)) {
         return routePath;

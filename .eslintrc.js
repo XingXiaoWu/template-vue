@@ -14,5 +14,8 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    // 关闭js的no-unused-expressions规则，使用ts的
+    'no-unused-expressions': 'off',
+    '@typescript-eslint/no-unused-expressions': 'error',
   },
 };

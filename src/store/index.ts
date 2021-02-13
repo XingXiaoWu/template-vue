@@ -1,3 +1,4 @@
+import { Any } from '@/@types';
 import { createStore, ModuleTree } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 

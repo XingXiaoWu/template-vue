@@ -15,16 +15,17 @@ export default defineComponent({
   props: {},
   setup() {
     const store = useStore();
-    const { proxy } = getCurrentInstance();
+    const { proxy } = getCurrentInstance()!;
     const state = reactive({});
     const loginOut = () => {
-      proxy.api.loginOut().then(() => {
-        store.dispatch('userStore/logonFailure');
-        // window.location.reload();
-        // router.push({
-        //   name: 'Login',
-        // });
-      });
+      // proxy!.$api.loginOut();
+      // proxy.api.loginOut().then(() => {
+      // store.dispatch('userStore/logonFailure');
+      // window.location.reload();
+      // router.push({
+      //   name: 'Login',
+      // });
+      // });
     };
     return {
       ...toRefs(state),

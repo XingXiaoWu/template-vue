@@ -56,14 +56,14 @@ export default defineComponent({
     });
 
     // 修改页面
-    const handleCurrentChange = (val) => {
+    const handleCurrentChange = (val: undefined | number) => {
       if (val !== undefined) {
         context.emit('handle-current-change', val);
       }
     };
-    const handleSizeChange = (val) => {
+    const handleSizeChange = (val: number) => {
       context.emit('update:pageSize', val);
-      handleCurrentChange();
+      handleCurrentChange(currentPage1.value);
     };
     // 初始化的时候，加载第一个
 

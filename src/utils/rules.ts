@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 // 表单规则校验
 // 规则校验
+import { Any } from '../@types/index';
 import {
   chineseRule, passwordRule, cen, en,
 } from './regular';
