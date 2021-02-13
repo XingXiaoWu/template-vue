@@ -52,7 +52,7 @@
 <script lang="ts">
 import { ElForm } from 'element-plus';
 import {
-  reactive, toRefs, computed, getCurrentInstance, defineComponent, ComponentInternalInstance, ref,
+  reactive, toRefs, computed, defineComponent, ref,
 } from 'vue';
 import Rules from '@/utils/rules';
 
@@ -90,7 +90,6 @@ export default defineComponent({
   },
   emits: ['update:modelValue', 'update:loading', 'success', 'cancel'],
   setup(props: Props, context) {
-    // const { proxy } = getCurrentInstance() as ComponentInternalInstance;
     const formRef = ref<InstanceType<typeof ElForm>>();
     const rules = computed(() => Rules);
     const visible = computed({
