@@ -52,7 +52,8 @@
 <script lang="ts">
 import { ElForm } from 'element-plus';
 import {
-  reactive, toRefs, computed, defineComponent, ref, getCurrentInstance, ComponentInternalInstance,
+  reactive, toRefs, computed, defineComponent, ref,
+  // getCurrentInstance, ComponentInternalInstance,
 } from 'vue';
 import Rules from '@/utils/rules';
 
@@ -90,7 +91,7 @@ export default defineComponent({
   },
   emits: ['update:modelValue', 'update:loading', 'success', 'cancel'],
   setup(props: Props, context) {
-    const { proxy } = getCurrentInstance() as ComponentInternalInstance;
+    // const { proxy } = getCurrentInstance() as ComponentInternalInstance;
     const formRef = ref<InstanceType<typeof ElForm>>();
     const rules = computed(() => Rules);
     const visible = computed({
@@ -118,7 +119,6 @@ export default defineComponent({
       formRef.value?.resetFields();
     };
     const addAction = () => {
-      proxy?.$api.login();
       // proxy?.$api
       //   .editPassword({
       //     password: state.form.curPassword,

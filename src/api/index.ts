@@ -4,14 +4,9 @@ import { ElMessage } from 'element-plus';
 import globalSettings from '@/setting';
 import store from '@/store';
 import { router } from '@/router';
-import { Any } from '@/@types';
+import { Any, ResponseX } from '@/@types';
 
 // 默认吐出来的格式
-interface ResponseX {
-  status: string;
-  message: string;
-  data?: Any;
-}
 
 // 错误处理
 const errorHandle = (error: Error) => {
@@ -67,5 +62,5 @@ API.interceptors.response.use(
 // };
 export default {
   // 登录
-  login: (params: any) => API.POSTJSON('/mrqc/admin/sapi/user/login', params),
+  login: (params: Any) => API.POSTJSON('/mrqc/admin/sapi/user/login', params),
 };

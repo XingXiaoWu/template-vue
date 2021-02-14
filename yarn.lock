@@ -1747,10 +1747,10 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@xing.wu/axios@^1.0.8-apache1.0.0":
-  version "1.0.8-apache1.0.0"
-  resolved "https://registry.npmjs.org/@xing.wu/axios/-/axios-1.0.8-apache1.0.0.tgz#78d385f040f0deb99ecd75003c67972d53ee8dd3"
-  integrity sha512-gh9CTWNOK0Qv4bP4QJMh5zTwTRlECh/DL5L1qL+dg8Fupsf8jBb24IY9XMh8Jzk0YDXx0PueBsGT6vrxngvnJA==
+"@xing.wu/axios@^1.0.8-apache1.0.1":
+  version "1.0.8-apache1.0.1"
+  resolved "https://registry.npmjs.org/@xing.wu/axios/-/axios-1.0.8-apache1.0.1.tgz#8a3f43bb20d5c543e100924937aafd8109b843af"
+  integrity sha512-T3+WO8Zx7DiAimMO3jY1zQRe7F4NsrgEqM+tfdw4qDwSUeMmcp4Rom/XAMySy3wKQxRprj3Vi1nN8UQyOfaWWA==
   dependencies:
     qs "^6.9.6"
 

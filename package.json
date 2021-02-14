@@ -9,7 +9,7 @@
     "new": "plop"
   },
   "dependencies": {
-    "@xing.wu/axios": "^1.0.8-apache1.0.0",
+    "@xing.wu/axios": "^1.0.8-apache1.0.1",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "element-plus": "^1.0.2-beta.32",

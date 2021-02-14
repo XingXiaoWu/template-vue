@@ -4,7 +4,7 @@
       v-if="globalSettings.logoType === 'logo'"
       src="@/assets/images/logo/logo.png"
       class="logo"
-    />
+    >
     <i
       v-else-if="globalSettings.logoType === 'iconfont'"
       :class="globalSettings.logoIconName"
