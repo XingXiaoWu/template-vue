@@ -9,4 +9,6 @@ export interface ResponseX {
 
 export interface Api {
   login: (params?: any) => Promise<any>;
+  loginOut: (params?: any) => Promise<any>;
+  getCurrentPermissions: (params?: any) => Promise<any>;
 }

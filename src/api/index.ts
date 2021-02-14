@@ -62,5 +62,16 @@ API.interceptors.response.use(
 // };
 export default {
   // 登录
-  login: (params: Any) => API.POSTJSON('/mrqc/admin/sapi/user/login', params),
+  login: (params?: Any) => new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        token: '123',
+        username: params.username,
+      });
+    }, 3000);
+  }),
+  // 退出登陆
+  loginOut: (params?: Any) => API.POSTJSON('', params),
+  // 获取当前权限
+  getCurrentPermissions: (params?: Any) => API.GET('/mrqc/admin/sapi/permission/get-current', params),
 };

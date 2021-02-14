@@ -16,6 +16,15 @@ const defaultRoutes: Array<RouteRecordRaw> = [
     name: 'Login',
     component: () => import('@/views/Login/index.vue'),
   },
+  {
+    meta: {
+      sidebarHidden: true,
+    },
+    path: '/home',
+    name: 'Home',
+    component: () => import('@/views/Home/index.vue'),
+
+  },
 ];
 
 const lastRoute = {

@@ -4,7 +4,7 @@ import createPersistedState from 'vuex-persistedstate';
 
 const modules: ModuleTree<Any> = {};
 const modulePluginPaths: Array<string> = [];
-const requireModule = require.context('./modules', false, /.js$/);
+const requireModule = require.context('./modules', false, /.ts$/);
 requireModule.keys().forEach((fileName: string) => {
   modules[fileName.slice(2, -3)] = requireModule(fileName).default;
   // 如果存在且大于0
