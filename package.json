@@ -9,10 +9,12 @@
     "new": "plop"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.168",
     "@xing.wu/axios": "^1.0.8-apache1.0.1",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "element-plus": "^1.0.2-beta.32",
+    "lodash": "^4.17.20",
     "vue": "^3.0.5",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0",

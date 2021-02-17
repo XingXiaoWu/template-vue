@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import LayoutMain from '@/layouts/LayoutMain/index.vue';
 
 const defaultRoutes: Array<RouteRecordRaw> = [
   {
@@ -12,18 +13,31 @@ const defaultRoutes: Array<RouteRecordRaw> = [
     meta: {
       sidebarHidden: true,
     },
-    path: '/login',
-    name: 'Login',
-    component: () => import('@/views/Login/index.vue'),
+    path: '/test',
+    component: () => import('../views/Home.vue'),
   },
   {
     meta: {
       sidebarHidden: true,
     },
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login/index.vue'),
+  },
+  {
+    meta: {
+      sidebarHidden: true,
+      activeRoute: '',
+    },
     path: '/home',
-    name: 'Home',
-    component: () => import('@/views/Home/index.vue'),
-
+    component: LayoutMain,
+    children: [
+      {
+        path: '',
+        name: 'Home',
+        component: () => import('../views/Home/index.vue'),
+      },
+    ],
   },
 ];
 
